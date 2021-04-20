@@ -9,13 +9,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>EstimationActuelle</th>
-                <th>PrixVente</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Artiste</th>
                 <th>Style</th>
-                <th>DateVente</th>
+                <th>Region</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,13 +21,11 @@
         {% for produit in produits %}
             <tr>
                 <td>{{ produit.id }}</td>
-                <td>{{ produit.estimationActuelle }}</td>
-                <td>{{ produit.prixVente }}</td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.artiste }}</td>
                 <td>{{ produit.style }}</td>
-                <td>{{ produit.dateVente ? produit.dateVente|date('Y-m-d') : '' }}</td>
+                <td>{{ produit.region }}</td>
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
@@ -37,7 +33,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

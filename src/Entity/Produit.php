@@ -19,15 +19,6 @@ class Produit
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $estimationActuelle;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $prixVente;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -49,10 +40,6 @@ class Produit
      */
     private $style;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dateVente;
 
     /**
      * @ORM\ManyToOne(targetEntity=Lot::class)
@@ -81,6 +68,11 @@ class Produit
      */
     private $idCategorie;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $region;
+
     public function __construct()
     {
         $this->idPhoto = new ArrayCollection();
@@ -92,29 +84,6 @@ class Produit
         return $this->id;
     }
 
-    public function getEstimationActuelle(): ?float
-    {
-        return $this->estimationActuelle;
-    }
-
-    public function setEstimationActuelle(float $estimationActuelle): self
-    {
-        $this->estimationActuelle = $estimationActuelle;
-
-        return $this;
-    }
-
-    public function getPrixVente(): ?float
-    {
-        return $this->prixVente;
-    }
-
-    public function setPrixVente(?float $prixVente): self
-    {
-        $this->prixVente = $prixVente;
-
-        return $this;
-    }
 
     public function getNom(): ?string
     {
@@ -164,17 +133,6 @@ class Produit
         return $this;
     }
 
-    public function getDateVente(): ?\DateTimeInterface
-    {
-        return $this->dateVente;
-    }
-
-    public function setDateVente(?\DateTimeInterface $dateVente): self
-    {
-        $this->dateVente = $dateVente;
-
-        return $this;
-    }
 
     public function getIdLot(): ?lot
     {
@@ -262,6 +220,18 @@ class Produit
     public function removeIdCategorie(categorie $idCategorie): self
     {
         $this->idCategorie->removeElement($idCategorie);
+
+        return $this;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(string $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }
