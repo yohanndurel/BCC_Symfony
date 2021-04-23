@@ -20,16 +20,20 @@
                 <td>{{ personne.prenom }}</td>
             </tr>
             <tr>
-                <th>Mail</th>
-                <td>{{ personne.mail }}</td>
+                <th>Username</th>
+                <td>{{ personne.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ personne.email }}</td>
             </tr>
             <tr>
                 <th>NumeroTel</th>
                 <td>{{ personne.numeroTel }}</td>
             </tr>
             <tr>
-                <th>MotDePasse</th>
-                <td>{{ personne.motDePasse }}</td>
+                <th>Password</th>
+                <td>{{ personne.password }}</td>
             </tr>
             <tr>
                 <th>Adresse</th>
@@ -42,6 +46,10 @@
             <tr>
                 <th>Age</th>
                 <td>{{ personne.age }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ personne.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>

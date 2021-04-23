@@ -14,12 +14,14 @@ class PersonneType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mail')
+            ->add('username')
+            ->add('email')
             ->add('numeroTel')
-            ->add('motDePasse')
+            ->add('password')
             ->add('adresse')
             ->add('codePostal')
             ->add('age')
+            ->add('isActive')
         ;
     }
 
