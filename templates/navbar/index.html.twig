@@ -16,6 +16,11 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Rechercher un produit">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
-        <a type="button" class="btn btn-outline-info" href="{{ path("app_logout") }}">Déconnexion</a>
+        {% if app.user %}
+            <a type="button" class="btn btn-outline-info" href="{{ path("app_logout") }}">Déconnexion</a>
+        {% else %}
+            <a type="button" class="btn btn-outline-info" href="{{ path("app_login") }}">Connexion</a>
+            <a type="button" class="btn btn-outline-info" href="{{ path("app_register") }}">Inscription</a>
+        {% endif %}
     </div>
 </nav>

@@ -44,7 +44,7 @@ class Personne implements UserInterface
     private $numeroTel;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=4096)
      */
     private $password;
 
@@ -62,11 +62,6 @@ class Personne implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $age;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isActive;
 
     public function getId(): ?int
     {
@@ -181,17 +176,6 @@ class Personne implements UserInterface
         return $this;
     }
 
-    public function getIsActive(): ?bool
-    {
-        return $this->isActive;
-    }
-
-    public function setIsActive(bool $isActive): self
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
     public function getRoles()
     {
         return array('ROLE_USER');
