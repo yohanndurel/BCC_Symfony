@@ -3,15 +3,15 @@
 {% block title %}Enchere index{% endblock %}
 
 {% block body %}
-    <h1>Enchere index</h1>
+    <h1>Liste des Enchères</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Heure</th>
-                <th>Date</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,20 +20,20 @@
             <tr>
                 <td>{{ enchere.id }}</td>
                 <td>{{ enchere.nom }}</td>
-                <td>{{ enchere.heure }}</td>
-                <td>{{ enchere.date ? enchere.date|date('Y-m-d') : '' }}</td>
+                <td>{{ enchere.dateDebut ? enchere.dateDebut|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ enchere.dateFin ? enchere.dateFin|date('d-m-Y H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('enchere_show', {'id': enchere.id}) }}">show</a>
-                    <a href="{{ path('enchere_edit', {'id': enchere.id}) }}">edit</a>
+                    <a href="{{ path('enchere_show', {'id': enchere.id}) }}">Afficher</a>
+                    <a href="{{ path('enchere_edit', {'id': enchere.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucune enchère n'est prévue</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('enchere_new') }}">Create new</a>
+    <a href="{{ path('enchere_new') }}">Nouvelle enchère</a>
 {% endblock %}

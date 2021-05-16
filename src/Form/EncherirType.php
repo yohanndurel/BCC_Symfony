@@ -2,29 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Lot;
+use App\Entity\Encherir;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LotType extends AbstractType
+class EncherirType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('description')
-            ->add('estimationActuelle')
-            ->add('prixReserve')
-            ->add('dateEstimation')
-            ->add('idEnchere')
+            ->add('prixPropose')
+            ->add('idAcheteur')
+            ->add('idLot')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Lot::class,
+            'data_class' => Encherir::class,
         ]);
     }
 }

@@ -146,4 +146,9 @@ class Acheteur
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string)($this->getIdentite());
+    }
 }
