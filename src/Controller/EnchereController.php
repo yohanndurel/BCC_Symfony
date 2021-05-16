@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enchere;
 use App\Form\EnchereType;
 use App\Repository\EnchereRepository;
+use App\Repository\LotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,10 +52,13 @@ class EnchereController extends AbstractController
     /**
      * @Route("/{id}", name="enchere_show", methods={"GET"})
      */
-    public function show(Enchere $enchere): Response
+    public function show(Enchere $enchere, LotRepository $lotRepository): Response
     {
         return $this->render('enchere/show.html.twig', [
             'enchere' => $enchere,
+            'lots' => $lotRepository->findBy(
+                ['idEnchere' => $enchere->getId()]
+            )
         ]);
     }
 
