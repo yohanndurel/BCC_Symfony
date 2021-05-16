@@ -11,12 +11,14 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Mail</th>
+                <th>Username</th>
+                <th>Email</th>
                 <th>NumeroTel</th>
-                <th>MotDePasse</th>
+                <th>Password</th>
                 <th>Adresse</th>
                 <th>CodePostal</th>
                 <th>Age</th>
+                <th>IsActive</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,12 +28,14 @@
                 <td>{{ personne.id }}</td>
                 <td>{{ personne.nom }}</td>
                 <td>{{ personne.prenom }}</td>
-                <td>{{ personne.mail }}</td>
+                <td>{{ personne.username }}</td>
+                <td>{{ personne.email }}</td>
                 <td>{{ personne.numeroTel }}</td>
-                <td>{{ personne.motDePasse }}</td>
+                <td>{{ personne.password }}</td>
                 <td>{{ personne.adresse }}</td>
                 <td>{{ personne.codePostal }}</td>
                 <td>{{ personne.age }}</td>
+                <td>{{ personne.isActive ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('personne_show', {'id': personne.id}) }}">show</a>
                     <a href="{{ path('personne_edit', {'id': personne.id}) }}">edit</a>
@@ -39,7 +43,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="12">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
