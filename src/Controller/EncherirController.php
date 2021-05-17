@@ -25,7 +25,7 @@ class EncherirController extends AbstractController
     }
 
     #[Route('/{id}/new', name: 'encherir_new', methods: ['GET', 'POST'])]
-    public function new_id(Request $request, Lot $lot): Response
+    public function new(Request $request, Lot $lot): Response
     {
         $encherir = new Encherir();
         $encherir->setHeure(new \DateTime('now', new \DateTimeZone('Europe/Paris')));

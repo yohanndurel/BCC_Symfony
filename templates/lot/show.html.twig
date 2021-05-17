@@ -19,6 +19,18 @@
                 <th>Description</th>
                 <td>{{ lot.description }}</td>
             </tr>
+            <tr>
+                <th>Estimation</th>
+                <td>{{ lot.estimationActuelle }}</td>
+            </tr>
+            <tr>
+                <th>Date d'estimation</th>
+                <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix de réserve</th>
+                <td>{{ lot.prixReserve }}</td>
+            </tr>
         </tbody>
     </table>
 

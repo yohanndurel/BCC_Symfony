@@ -41,6 +41,7 @@
             <th>Nom</th>
             <th>Description</th>
             <th>Estimation</th>
+            <th>Date d'estimation</th>
             <th>Prix de réserve</th>
             <th>actions</th>
         </tr>
@@ -52,6 +53,7 @@
                 <td>{{ lot.nom }}</td>
                 <td>{{ lot.description }}</td>
                 <td>{{ lot.estimationActuelle }}</td>
+                <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ lot.prixReserve }}</td>
                 <td>
                     <a href="{{ path('lot_show', {'id': lot.id}) }}">Afficher</a>
