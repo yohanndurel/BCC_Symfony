@@ -26,13 +26,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('lot_index') }}">Afficher les lots</a><br>
-
     <a href="{{ path('enchere_index') }}">Retour</a>
 
     <a href="{{ path('enchere_edit', {'id': enchere.id}) }}">Modifier</a>
 
-    {{ include('enchere/_delete_form.html.twig') }}
+    {{ include('enchere/_delete_form.html.twig') }}<br>
 
 
     <h2>Lots de la vente au enchères</h2>
@@ -42,6 +40,8 @@
             <th>Id</th>
             <th>Nom</th>
             <th>Description</th>
+            <th>Estimation</th>
+            <th>Prix de réserve</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -51,6 +51,8 @@
                 <td>{{ lot.id }}</td>
                 <td>{{ lot.nom }}</td>
                 <td>{{ lot.description }}</td>
+                <td>{{ lot.estimationActuelle }}</td>
+                <td>{{ lot.prixReserve }}</td>
                 <td>
                     <a href="{{ path('lot_show', {'id': lot.id}) }}">Afficher</a>
                     <a href="{{ path('lot_edit', {'id': lot.id}) }}">Modifier</a>
@@ -59,7 +61,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Pas de lots dans cette enchère</td>
             </tr>
         {% endfor %}
         </tbody>

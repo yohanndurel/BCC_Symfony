@@ -3,15 +3,17 @@
 {% block title %}Encherir index{% endblock %}
 
 {% block body %}
-    <h1>Encherir index</h1>
+    <h1>Listes des enchères</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>PrixPropose</th>
-                <th>Heure</th>
-                <th>actions</th>
+                <th>Prix de l'enchère</th>
+                <th>Date et heure</th>
+                <th>Acheteur</th>
+                <th>Lot</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +22,11 @@
                 <td>{{ encherir.id }}</td>
                 <td>{{ encherir.prixPropose }}</td>
                 <td>{{ encherir.heure ? encherir.heure|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ encherir.idAcheteur }}</td>
+                <th>{{ encherir.idLot }}</th>
                 <td>
-                    <a href="{{ path('encherir_show', {'id': encherir.id}) }}">show</a>
-                    <a href="{{ path('encherir_edit', {'id': encherir.id}) }}">edit</a>
+                    <a href="{{ path('encherir_show', {'id': encherir.id}) }}">Afficher</a>
+                    <a href="{{ path('encherir_edit', {'id': encherir.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
