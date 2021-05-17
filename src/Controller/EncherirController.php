@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Enchere;
 use App\Entity\Encherir;
+use App\Entity\Lot;
 use App\Form\EncherirType;
 use App\Repository\EncherirRepository;
+use App\Repository\LotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,11 +24,12 @@ class EncherirController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'encherir_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    #[Route('/{id}/new', name: 'encherir_new', methods: ['GET', 'POST'])]
+    public function new_id(Request $request, Lot $lot): Response
     {
         $encherir = new Encherir();
         $encherir->setHeure(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+        $encherir->setIdLot($lot);
         $form = $this->createForm(EncherirType::class, $encherir);
         $form->handleRequest($request);
 

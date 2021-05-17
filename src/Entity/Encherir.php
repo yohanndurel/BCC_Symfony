@@ -30,20 +30,14 @@ class Encherir
     private $heure;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Acheteur::class, inversedBy="encherir")
+     * @ORM\ManyToOne(targetEntity=Acheteur::class, inversedBy="encherir")
      */
     private $idAcheteur;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Lot::class, inversedBy="encherir")
+     * @ORM\ManyToOne(targetEntity=Lot::class, inversedBy="encherir")
      */
     private $idLot;
-
-    public function __construct()
-    {
-        $this->idAcheteur = new ArrayCollection();
-        $this->idLot = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -74,50 +68,26 @@ class Encherir
         return $this;
     }
 
-    /**
-     * @return Collection|Acheteur[]
-     */
-    public function getIdAcheteur(): Collection
+    public function getIdAcheteur(): ?acheteur
     {
         return $this->idAcheteur;
     }
 
-    public function addIdAcheteur(Acheteur $idAcheteur): self
+    public function setIdAcheteur(?acheteur $idAcheteur): self
     {
-        if (!$this->idAcheteur->contains($idAcheteur)) {
-            $this->idAcheteur[] = $idAcheteur;
-        }
+        $this->idAcheteur = $idAcheteur;
 
         return $this;
     }
 
-    public function removeIdAcheteur(Acheteur $idAcheteur): self
-    {
-        $this->idAcheteur->removeElement($idAcheteur);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Lot[]
-     */
-    public function getIdLot(): Collection
+    public function getIdLot(): ?lot
     {
         return $this->idLot;
     }
 
-    public function addIdLot(Lot $idLot): self
+    public function setIdLot(?lot $idLot): self
     {
-        if (!$this->idLot->contains($idLot)) {
-            $this->idLot[] = $idLot;
-        }
-
-        return $this;
-    }
-
-    public function removeIdLot(Lot $idLot): self
-    {
-        $this->idLot->removeElement($idLot);
+        $this->idLot = $idLot;
 
         return $this;
     }

@@ -27,11 +27,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucune enchère réalisées.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('encherir_new') }}">Create new</a>
 {% endblock %}

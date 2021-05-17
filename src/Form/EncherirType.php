@@ -14,7 +14,6 @@ class EncherirType extends AbstractType
         $builder
             ->add('prixPropose')
             ->add('idAcheteur')
-            ->add('idLot')
         ;
     }
 
