@@ -19,6 +19,19 @@ class EncherirRepository extends ServiceEntityRepository
         parent::__construct($registry, Encherir::class);
     }
 
+    public function topEnchere($idLot)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT e 
+            FROM App\Entity\Encherir e
+            WHERE (e.idLot = :id)
+            ORDER BY e.prixPropose DESC'
+        )->setParameter('id', $idLot)->setMaxResults(1)
+            ->getResult();
+
+        return $query;
+    }
+
     // /**
     //  * @return Encherir[] Returns an array of Encherir objects
     //  */

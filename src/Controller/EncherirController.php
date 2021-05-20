@@ -25,12 +25,20 @@ class EncherirController extends AbstractController
     }
 
     #[Route('/{id}/new', name: 'encherir_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, Lot $lot): Response
+    public function new(Request $request, Lot $lot, EncherirRepository $encherirRepository): Response
     {
         $encherir = new Encherir();
         $encherir->setHeure(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
         $encherir->setIdLot($lot);
-        $form = $this->createForm(EncherirType::class, $encherir);
+
+        if($encherirRepository->topEnchere($lot->getId()) == null){
+            $topEnchere = 0;
+        }
+        else{
+            $topEnchere = $encherirRepository->topEnchere($lot->getId())[0];
+        }
+
+        $form = $this->createForm(EncherirType::class, $encherir, array('topEnchere' => $topEnchere));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,6 +50,7 @@ class EncherirController extends AbstractController
         }
 
         return $this->render('encherir/new.html.twig', [
+            'topEnchere' => $encherirRepository->topEnchere($lot->getId()),
             'encherir' => $encherir,
             'form' => $form->createView(),
         ]);

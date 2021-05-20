@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Encherir;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,7 +13,12 @@ class EncherirType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prixPropose')
+            ->add('prixPropose', IntegerType::class, array(
+
+
+
+                'attr' => array('min' =>$options['topEnchere'])))
+
             ->add('idAcheteur')
         ;
     }
@@ -21,6 +27,7 @@ class EncherirType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Encherir::class,
+            'topEnchere' => 0,
         ]);
     }
 }

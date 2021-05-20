@@ -54,11 +54,19 @@ class LotController extends AbstractController
      */
     public function show(Lot $lot, EncherirRepository $encherirRepository): Response
     {
+        if($encherirRepository->topEnchere($lot->getId()) == null){
+            $topEnchere = 0;
+        }
+        else{
+            $topEnchere = $encherirRepository->topEnchere($lot->getId())[0];
+        }
+
         return $this->render('lot/show.html.twig', [
             'lot' => $lot,
             'encherir' => $encherirRepository->findBy(
                 ['idLot' => $lot->getId()]
-            )
+            ),
+            'topEnchere' => $topEnchere,
         ]);
     }
 

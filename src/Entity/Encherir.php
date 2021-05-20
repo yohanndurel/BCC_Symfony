@@ -91,4 +91,9 @@ class Encherir
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string)($this->getPrixPropose());
+    }
 }
