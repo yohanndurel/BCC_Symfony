@@ -14,7 +14,8 @@
                 <th>Estimation</th>
                 <th>Date d'estimation</th>
                 <th>Prix de réserve</th>
-                <th>actions</th>
+                <th>Enchère la plus haute</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,17 @@
                 <td>{{ lot.estimationActuelle }}</td>
                 <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ lot.prixReserve }}</td>
+                <td>
+                    {% for topEnchere in listeTopEnchere %}
+                        {% if topEnchere.idLot == lot %}
+                            {% if topEnchere.prixPropose != -1 %}
+                                {{ topEnchere.prixPropose }}
+                            {% else %}
+                                Aucune
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('lot_show', {'id': lot.id}) }}">Afficher</a>
                     <a href="{{ path('lot_edit', {'id': lot.id}) }}">Modifier</a>

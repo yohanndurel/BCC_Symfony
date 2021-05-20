@@ -33,7 +33,11 @@
             </tr>
             <tr>
                 <th>Enchère la plus haute</th>
-                <td>{{ topEnchere.prixPropose }}</td>
+                {% if topEnchere %}
+                    <td>{{ topEnchere.prixPropose }}</td>
+                    {% else %}
+                    <td>Aucune enchère n'a été effectuée</td>
+                {% endif %}
             </tr>
         </tbody>
     </table>
