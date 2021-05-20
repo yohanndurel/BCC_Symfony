@@ -23,14 +23,14 @@ class Enchere
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="datetime")
      */
-    private $heure;
+    private $dateDebut;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $date;
+    private $dateFin;
 
     /**
      * @ORM\ManyToOne(targetEntity=Lieu::class)
@@ -43,6 +43,7 @@ class Enchere
      * @ORM\JoinColumn(nullable=false)
      */
     private $idAdmin;
+
 
     public function getId(): ?int
     {
@@ -61,26 +62,26 @@ class Enchere
         return $this;
     }
 
-    public function getHeure(): ?string
+    public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->heure;
+        return $this->dateDebut;
     }
 
-    public function setHeure(string $heure): self
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
     {
-        $this->heure = $heure;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->dateFin;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDateFin(\DateTimeInterface $dateFin): self
     {
-        $this->date = $date;
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -107,5 +108,10 @@ class Enchere
         $this->idAdmin = $idAdmin;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)($this->getNom());
     }
 }

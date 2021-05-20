@@ -16,19 +16,57 @@
                 <td>{{ enchere.nom }}</td>
             </tr>
             <tr>
-                <th>Heure</th>
-                <td>{{ enchere.heure }}</td>
+                <th>Date de début</th>
+                <td>{{ enchere.dateDebut ? enchere.dateDebut|date('d-m-Y H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>{{ enchere.date ? enchere.date|date('Y-m-d') : '' }}</td>
+                <th>Date de fin</th>
+                <td>{{ enchere.dateFin ? enchere.dateFin|date('d-m-Y H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('enchere_index') }}">back to list</a>
+    <a href="{{ path('enchere_index') }}">Retour</a>
 
-    <a href="{{ path('enchere_edit', {'id': enchere.id}) }}">edit</a>
+    <a href="{{ path('enchere_edit', {'id': enchere.id}) }}">Modifier</a>
 
-    {{ include('enchere/_delete_form.html.twig') }}
+    {{ include('enchere/_delete_form.html.twig') }}<br>
+
+
+    <h2>Lots de la vente au enchères</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Estimation</th>
+            <th>Date d'estimation</th>
+            <th>Prix de réserve</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lot in lots %}
+            <tr>
+                <td>{{ lot.id }}</td>
+                <td>{{ lot.nom }}</td>
+                <td>{{ lot.description }}</td>
+                <td>{{ lot.estimationActuelle }}</td>
+                <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ lot.prixReserve }}</td>
+                <td>
+                    <a href="{{ path('lot_show', {'id': lot.id}) }}">Afficher</a>
+                    <a href="{{ path('lot_edit', {'id': lot.id}) }}">Modifier</a>
+                    <a href="{{ path('encherir_new', {'id': lot.id}) }}">Encherir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de lots dans cette enchère</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

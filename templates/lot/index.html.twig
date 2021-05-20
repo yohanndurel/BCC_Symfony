@@ -11,7 +11,11 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>Estimation</th>
+                <th>Date d'estimation</th>
+                <th>Prix de réserve</th>
+                <th>Enchère la plus haute</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,18 +24,32 @@
                 <td>{{ lot.id }}</td>
                 <td>{{ lot.nom }}</td>
                 <td>{{ lot.description }}</td>
+                <td>{{ lot.estimationActuelle }}</td>
+                <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ lot.prixReserve }}</td>
                 <td>
-                    <a href="{{ path('lot_show', {'id': lot.id}) }}">show</a>
-                    <a href="{{ path('lot_edit', {'id': lot.id}) }}">edit</a>
+                    {% for topEnchere in listeTopEnchere %}
+                        {% if topEnchere.idLot == lot %}
+                            {% if topEnchere.prixPropose != -1 %}
+                                {{ topEnchere.prixPropose }}
+                            {% else %}
+                                Pas d'enchères
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('lot_show', {'id': lot.id}) }}">Afficher</a>
+                    <a href="{{ path('lot_edit', {'id': lot.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun lot n'a été ajouté</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('lot_new') }}">Create new</a>
+    <a href="{{ path('lot_new') }}">Créer un nouveau lot</a>
 {% endblock %}

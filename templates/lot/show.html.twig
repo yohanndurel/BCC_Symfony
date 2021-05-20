@@ -19,12 +19,68 @@
                 <th>Description</th>
                 <td>{{ lot.description }}</td>
             </tr>
+            <tr>
+                <th>Estimation</th>
+                <td>{{ lot.estimationActuelle }}</td>
+            </tr>
+            <tr>
+                <th>Date d'estimation</th>
+                <td>{{ lot.dateEstimation ? lot.dateEstimation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix de réserve</th>
+                <td>{{ lot.prixReserve }}</td>
+            </tr>
+            <tr>
+                <th>Enchère la plus haute</th>
+                {% if topEnchere %}
+                    <td>{{ topEnchere.prixPropose }}</td>
+                    {% else %}
+                    <td>Aucune enchère n'a été effectuée</td>
+                {% endif %}
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('lot_index') }}">back to list</a>
+    <a href="{{ path('encherir_new', {'id': lot.id}) }}">Encherir</a><br>
 
-    <a href="{{ path('lot_edit', {'id': lot.id}) }}">edit</a>
+    <a href="{{ path('lot_index') }}">Retour</a>
 
-    {{ include('lot/_delete_form.html.twig') }}
+    <a href="{{ path('lot_edit', {'id': lot.id}) }}">Modifier</a>
+
+    {{ include('lot/_delete_form.html.twig') }}<br>
+
+    <h2>Listes des enchères</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Prix de l'enchère</th>
+            <th>Date et heure</th>
+            <th>Acheteur</th>
+            <th>Lot</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for encherir in encherir %}
+            <tr>
+                <td>{{ encherir.id }}</td>
+                <td>{{ encherir.prixPropose }}</td>
+                <td>{{ encherir.heure ? encherir.heure|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ encherir.idPersonne }}</td>
+                <th>{{ encherir.idLot }}</th>
+                <td>
+                    <a href="{{ path('encherir_show', {'id': encherir.id}) }}">Afficher</a>
+                    <a href="{{ path('encherir_edit', {'id': encherir.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune enchère réalisée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
