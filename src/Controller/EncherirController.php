@@ -30,6 +30,7 @@ class EncherirController extends AbstractController
         $encherir = new Encherir();
         $encherir->setHeure(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
         $encherir->setIdLot($lot);
+        $encherir->setIdPersonne($this->getUser());
 
         if($encherirRepository->topEnchere($lot->getId()) == null){
             $topEnchere = 0;

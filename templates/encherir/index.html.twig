@@ -22,7 +22,7 @@
                 <td>{{ encherir.id }}</td>
                 <td>{{ encherir.prixPropose }}</td>
                 <td>{{ encherir.heure ? encherir.heure|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ encherir.idAcheteur }}</td>
+                <td>{{ encherir.idPersonne }}</td>
                 <th>{{ encherir.idLot }}</th>
                 <td>
                     <a href="{{ path('encherir_show', {'id': encherir.id}) }}">Afficher</a>

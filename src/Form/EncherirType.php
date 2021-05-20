@@ -17,10 +17,7 @@ class EncherirType extends AbstractType
 
 
 
-                'attr' => array('min' =>$options['topEnchere'])))
-
-            ->add('idAcheteur')
-        ;
+                'attr' => array('min' =>$options['topEnchere'])));
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -3,9 +3,13 @@
 {% block title %}New Encherir{% endblock %}
 
 {% block body %}
-    <h1>Create new Encherir</h1>
+    {% if app.user %}
+        <h1>Créer une nouvelle enchère</h1>
 
-    {{ include('encherir/_form.html.twig') }}
+        {{ include('encherir/_form.html.twig') }}
 
-    <a href="{{ path('encherir_index') }}">back to list</a>
+        <a href="{{ path('encherir_index') }}">Retour</a>
+    {% else %}
+        <h2>Vous devez être connecté pour encherir, <a href="{{ path('app_login') }}">connectez-vous</a></h2>
+    {% endif %}
 {% endblock %}

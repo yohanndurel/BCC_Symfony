@@ -56,6 +56,7 @@ class LotController extends AbstractController
 
         }
         $bestEncherirs = array_values($bestEncherirs);
+
         return $this->render('lot/index.html.twig', [
             'lots' => $lotRepository->findAll(),
             'listeTopEnchere' => $bestEncherirs

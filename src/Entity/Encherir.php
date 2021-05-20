@@ -30,9 +30,9 @@ class Encherir
     private $heure;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Acheteur::class, inversedBy="encherir")
+     * @ORM\ManyToOne(targetEntity=Personne::class, inversedBy="encherir")
      */
-    private $idAcheteur;
+    private $idPersonne;
 
     /**
      * @ORM\ManyToOne(targetEntity=Lot::class, inversedBy="encherir")
@@ -68,14 +68,14 @@ class Encherir
         return $this;
     }
 
-    public function getIdAcheteur(): ?acheteur
+    public function getIdPersonne(): ?personne
     {
-        return $this->idAcheteur;
+        return $this->idPersonne;
     }
 
-    public function setIdAcheteur(?acheteur $idAcheteur): self
+    public function setIdPersonne(?personne $idPersonne): self
     {
-        $this->idAcheteur = $idAcheteur;
+        $this->idPersonne = $idPersonne;
 
         return $this;
     }
