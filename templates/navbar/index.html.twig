@@ -6,15 +6,11 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-{#            <a class="dropdown-item" href="{{ path("produit_index") }}">Parcourir les Produits</a>#}
             <a class="dropdown-item" href="{{ path("enchere_index") }}">Ventes au Enchères</a>
             <a class="dropdown-item" href="{{ path("lot_index") }}">Lots</a>
+            <a class="dropdown-item" href="{{ path("produit_index") }}">Parcourir les Produits</a>
 {#            <a class="dropdown-item" href="#"></a>#}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Rechercher un produit">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-        </form>
         {% if app.user %}
             <a type="button" class="btn btn-outline-info" href="{{ path("app_logout") }}">Déconnexion</a>
         {% else %}

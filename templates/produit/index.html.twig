@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit index{% endblock %}
+{% block title %}Liste des Produits{% endblock %}
 
 {% block body %}
-    <h1>Produit index</h1>
+    <h1>Liste des Produit</h1>
 
     <table class="table">
         <thead>
@@ -27,8 +27,8 @@
                 <td>{{ produit.style }}</td>
                 <td>{{ produit.region }}</td>
                 <td>
-                    <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}">Afficher</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

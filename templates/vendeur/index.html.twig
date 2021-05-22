@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vendeur index{% endblock %}
+{% block title %}Vendeurs{% endblock %}
 
 {% block body %}
-    <h1>Vendeur index</h1>
+    <h1>Liste des Vendeurs</h1>
 
     <table class="table">
         <thead>
@@ -17,8 +17,8 @@
             <tr>
                 <td>{{ vendeur.id }}</td>
                 <td>
-                    <a href="{{ path('vendeur_show', {'id': vendeur.id}) }}">show</a>
-                    <a href="{{ path('vendeur_edit', {'id': vendeur.id}) }}">edit</a>
+                    <a href="{{ path('vendeur_show', {'id': vendeur.id}) }}">Afficher</a>
+                    <a href="{{ path('vendeur_edit', {'id': vendeur.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
