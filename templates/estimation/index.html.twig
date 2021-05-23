@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Estimation index{% endblock %}
+{% block title %}Liste des Estimations{% endblock %}
 
 {% block body %}
-    <h1>Estimation index</h1>
+    <h1>Liste des Estimations</h1>
 
     <table class="table">
         <thead>
@@ -21,8 +21,8 @@
                 <td>{{ estimation.estimation }}</td>
                 <td>{{ estimation.dateEstimation ? estimation.dateEstimation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('estimation_show', {'id': estimation.id}) }}">show</a>
-                    <a href="{{ path('estimation_edit', {'id': estimation.id}) }}">edit</a>
+                    <a href="{{ path('estimation_show', {'id': estimation.id}) }}">Afficher</a>
+                    <a href="{{ path('estimation_edit', {'id': estimation.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

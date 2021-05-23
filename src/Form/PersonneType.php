@@ -17,17 +17,18 @@ class PersonneType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('username')
-            ->add('email')
-            ->add('numeroTel')
-            ->add('password')
-            ->add('adresse')
-            ->add('codePostal')
-            ->add('age')
-            ->add('plainPassword', RepeatedType::class, array(
+            ->add('Password', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
+            ->add('email')
+            ->add('numeroTel')
+            //->add('password')
+            ->add('adresse')
+            ->add('codePostal')
+            ->add('age')
+
         ;
     }
 

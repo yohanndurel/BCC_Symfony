@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Enchere{% endblock %}
+{% block title %}Modifier la vente "{{ enchere.nom }}"{% endblock %}
 
 {% block body %}
-    <h1>Edit Enchere</h1>
+    <h1>Modifier la vente "{{ enchere.nom }}"</h1>
 
-    {{ include('enchere/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('enchere/_form.html.twig', {'button_label': 'Appliquer'}) }}
 
     <a href="{{ path('enchere_index') }}">Retour</a>
 
